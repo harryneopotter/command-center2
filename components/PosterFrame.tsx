@@ -16,12 +16,16 @@ export const PosterFrame: React.FC<PosterFrameProps> = ({ title, status, isActiv
   return (
     <div className={`
       relative w-[280px] h-[400px] bg-frame-outer rounded-[4px] p-4 
-      shadow-[15px_20px_35px_rgba(0,0,0,0.25)] border border-[#fff]
-      transition-all duration-300
-      ${isActive ? '' : 'opacity-90'}
+      border border-[#fff]
+      transition-all duration-500
+      ${isActive 
+        ? 'shadow-[0_0_60px_rgba(59,130,246,0.25),15px_20px_35px_rgba(0,0,0,0.25)] scale-[1.01]' 
+        : 'shadow-[15px_20px_35px_rgba(0,0,0,0.25)] opacity-90'}
     `}>
       {/* Screen content inside frame */}
-      <div className="w-full h-full bg-[#1e1e1e] border-2 border-black rounded-[2px] flex flex-col p-4 shadow-[inset_0_2px_15px_rgba(0,0,0,0.5)]">
+      <div className={`w-full h-full border-2 border-black rounded-[2px] flex flex-col p-4 transition-colors duration-500
+        ${isActive ? 'bg-[#151c24] shadow-[inset_0_0_30px_rgba(59,130,246,0.1)]' : 'bg-[#1e1e1e] shadow-[inset_0_2px_15px_rgba(0,0,0,0.5)]'}
+      `}>
          
          <div className="flex-1 flex flex-col items-center">
              <h2 className="text-[#E0E0E0] font-sans font-bold text-xl tracking-tight mt-2">{title}</h2>

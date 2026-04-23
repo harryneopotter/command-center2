@@ -48,6 +48,16 @@ const App: React.FC = () => {
     setLoadingLogs(false);
   }, [loadingLogs]);
 
+  const handleRefreshStats = useCallback(() => {
+    // Mocking a fetch stats, you will replace this
+    setLogs(prev => [...prev, `[System] Manually fetching metrics...`]);
+    setStats({
+      cpu: Math.floor(Math.random() * 100),
+      gpu: Math.floor(Math.random() * 100),
+      ram: Math.floor(Math.random() * 100),
+    });
+  }, []);
+
   const clearLogs = () => {
     setLogs(["[System] Console cleared."]);
   };
@@ -92,7 +102,7 @@ const App: React.FC = () => {
 
         {/* Console Unit */}
         <div className="flex justify-center w-[840px]">
-          <ConsoleUnit stats={stats} />
+          <ConsoleUnit stats={stats} onRefreshStats={handleRefreshStats} />
         </div>
 
         {/* Right Stack */}
